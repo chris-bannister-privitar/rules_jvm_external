@@ -355,7 +355,7 @@ def _pinned_coursier_fetch_impl(repository_ctx):
                 # For backwards compatibility. mirror_urls is a field added in a
                 # later version than the url field, so not all maven_install.json
                 # contains the mirror_urls field.
-                http_files.append("        urls = [\"%s\"]," % artifact["url"])
+                http_files.append("        urls = [\"%s\"]," % remove_auth_from_url(artifact["url"]))
             http_files.append("    )")
 
     http_files.extend(_get_jq_http_files())
